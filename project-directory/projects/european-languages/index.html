@@ -4,19 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Language Guess</title>
-    <link rel="style" href="style.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h1>Guess the Language</h1>
 
-    <p id="sample">
-      Bonjour, comment ça va aujourd’hui ?
+    <p id="sentence">
+      nothing here, if you see this then its broken /:
     </p>
 
     <input id="guess" type="text" placeholder="Type the language..." />
     <button id="submit">Submit</button>
 
-    <p id="result"></p>
+    <p id="feedback"> Try guessing a language! </p>
+    <p id="streak"> Current Streak: 0 </p>
 
+    <img src="europe-map-vexels.png" alt="oopsie, image didn't load" id="europe-image"/>
+
+    <script src="script.js"></script>
   </body>
 </html>
