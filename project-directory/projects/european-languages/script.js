@@ -24,7 +24,7 @@ const languageData = {
           "Elle parle très bien anglais et espagnol.",
           "Le train part à huit heures précises du matin.",
           "Je me demande si nous aurons de la pluie demain."
-          ],
+     ],
      German: [
           "Ich weiß nicht, was ich heute tun soll.",
           "Das Wetter ist heute sehr schön.",
@@ -46,7 +46,7 @@ const languageData = {
           "Sie spricht sehr gut Englisch und Spanisch.",
           "Der Zug fährt genau um acht Uhr morgens ab.",
           "Ich frage mich, ob es morgen regnen wird."
-          ],
+     ],
      Spanish: [
           "No sé qué hacer hoy.",
           "Hace mucho frío esta mañana.",
@@ -68,7 +68,7 @@ const languageData = {
           "Ella habla muy bien inglés y francés.",
           "El tren sale a las ocho en punto de la mañana.",
           "Me pregunto si lloverá mañana."
-          ],
+     ],
      Portuguese: [
           "Não sei o que fazer hoje.",
           "Está muito frio esta manhã.",
@@ -651,6 +651,8 @@ const languageData = {
 let currentLanguage = "";
 let currentSentence = "";
 let streak = 0;
+let wins = 0;
+let total = 0;
 
 // ----------------------------
 // 3. DOM ELEMENTS
@@ -661,6 +663,7 @@ const inputEl = document.getElementById("guess");
 const feedbackEl = document.getElementById("feedback");
 const streakEl = document.getElementById("streak");
 const buttonEl = document.getElementById("submit");
+const winperEl = document.getElementById("win-percentage");
 
 // ----------------------------
 // 4. PICK RANDOM LANGUAGE + SENTENCE
@@ -689,9 +692,10 @@ function pickNewSentence() {
 
 function checkAnswer() {
      const userGuess = inputEl.value.trim().toLowerCase();
-
+     total++;
      if (userGuess === currentLanguage.toLowerCase()) {
           streak++;
+          wins++;
           feedbackEl.textContent = "✅ Correct! It was indeed " + currentLanguage;
      } else {
           streak = 0;
@@ -700,7 +704,7 @@ function checkAnswer() {
      }
 
      streakEl.textContent = "Current Streak: " + streak;
-
+     winperEl.textContent = "Win Percentage: " + ((wins / total) * 100).toFixed(2) + "% (" + wins + "/" + total + ")";
      pickNewSentence();
 }
 
